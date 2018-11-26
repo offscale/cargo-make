@@ -255,8 +255,7 @@ fn run_for_args_valid() {
     let app = create_cli(&global_config);
 
     let matches = app.get_matches_from(vec![
-        "cargo",
-        "make",
+        "cargo-make",
         "--makefile",
         "./examples/dependencies.toml",
         "-l",
@@ -277,7 +276,7 @@ fn run_for_args_with_global_config() {
     global_config.default_task_name = Some("empty".to_string());
     let app = create_cli(&global_config);
 
-    let matches = app.get_matches_from(vec!["cargo", "make"]);
+    let matches = app.get_matches_from(vec!["cargo-make"]);
 
     run_for_args(matches, &global_config);
 }
@@ -288,8 +287,7 @@ fn run_for_args_log_level_override() {
     let app = create_cli(&global_config);
 
     let matches = app.get_matches_from(vec![
-        "cargo",
-        "make",
+        "cargo-make",
         "--makefile",
         "./examples/dependencies.toml",
         "-t",
@@ -312,8 +310,7 @@ fn run_for_args_set_env_values() {
     env::set_var("ENV3_TEST", "EMPTY");
 
     let matches = app.get_matches_from(vec![
-        "cargo",
-        "make",
+        "cargo-make",
         "--env",
         "ENV1_TEST=TEST1",
         "--env",
@@ -343,8 +340,7 @@ fn run_for_args_set_env_via_file() {
     env::set_var("ENV3_TEST", "EMPTY");
 
     let matches = app.get_matches_from(vec![
-        "cargo",
-        "make",
+        "cargo-make",
         "--env-file=./examples/test.env",
         "--verbose",
         "--disable-check-for-updates",
@@ -372,8 +368,7 @@ fn run_for_args_set_env_both() {
     env::set_var("ENV6_TEST", "EMPTY");
 
     let matches = app.get_matches_from(vec![
-        "cargo",
-        "make",
+        "cargo-make",
         "--env-file=./examples/test.env",
         "--env",
         "ENV4_TEST=TEST4",
@@ -403,8 +398,7 @@ fn run_for_args_print_only() {
     let app = create_cli(&global_config);
 
     let matches = app.get_matches_from(vec![
-        "cargo",
-        "make",
+        "cargo-make",
         "--makefile",
         "./examples/dependencies.toml",
         "-t",
@@ -426,12 +420,8 @@ fn run_protected_flow_example() {
     let global_config = GlobalConfig::new();
     let app = create_cli(&global_config);
 
-    let matches = app.get_matches_from(vec![
-        "cargo",
-        "make",
-        "--makefile",
-        "./examples/on_error.toml",
-    ]);
+    let matches =
+        app.get_matches_from(vec!["cargo-make", "--makefile", "./examples/on_error.toml"]);
 
     run_for_args(matches, &global_config);
 }
@@ -443,12 +433,7 @@ fn run_for_args_no_task_args() {
 
     env::set_var("CARGO_MAKE_TASK_ARGS", "EMPTY");
 
-    let matches = app.get_matches_from(vec![
-        "cargo",
-        "make",
-        "--disable-check-for-updates",
-        "empty",
-    ]);
+    let matches = app.get_matches_from(vec!["cargo-make", "--disable-check-for-updates", "empty"]);
 
     run_for_args(matches, &global_config);
 
@@ -463,8 +448,7 @@ fn run_for_args_set_task_args() {
     env::set_var("CARGO_MAKE_TASK_ARGS", "EMPTY");
 
     let matches = app.get_matches_from(vec![
-        "cargo",
-        "make",
+        "cargo-make",
         "--disable-check-for-updates",
         "empty",
         "arg1",
