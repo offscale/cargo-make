@@ -23,17 +23,17 @@ include = [
     "/Makefile.toml"
 ]
 
-[lib]
-name = "cli"
-path = "src/lib.rs"
+# [lib]
+# name = "cli"
+# path = "src/lib.rs"
 
-[[bin]]
-name = "cargo-make"
-path = "src/main.rs"
+# [[bin]]
+# name = "cargo-make"
+# path = "src/main.rs"
 
-[[bin]]
-name = "makers"
-path = "src/makers.rs"
+# [[bin]]
+# name = "makers"
+# path = "src/makers.rs"
 
 [dependencies]
 ci_info = "^0.2.1"
@@ -52,16 +52,16 @@ serde_derive = "^1.0.80"
 shell2batch = "^0.2.4"
 toml = "^0.4.10"
 
-[badges.travis-ci]
-branch = "master"
-repository = "sagiegurari/cargo-make"
+# [badges.travis-ci]
+# branch = "master"
+# repository = "sagiegurari/cargo-make"
 
-[badges.appveyor]
-repository = "sagiegurari/cargo-make"
-service = "github"
-branch = "master"
+# [badges.appveyor]
+# repository = "sagiegurari/cargo-make"
+# service = "github"
+# branch = "master"
 
-[badges.codecov]
-branch = "master"
-repository = "sagiegurari/cargo-make"
-service = "github"
+# [badges.codecov]
+# branch = "master"
+# repository = "sagiegurari/cargo-make"
+# service = "github"

@@ -61,7 +61,7 @@ fn get_engine_type(task: &Task) -> EngineType {
     }
 }
 
-pub(crate) fn invoke(task: &Task, cli_arguments: &Vec<String>) -> bool {
+pub fn invoke(task: &Task, cli_arguments: &Vec<String>) -> bool {
     let engine_type = get_engine_type(&task);
 
     match engine_type {

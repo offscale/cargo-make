@@ -155,16 +155,18 @@ fn create_execution_plan_for_step(
 
                 if add {
                     match task_config.dependencies {
-                        Some(ref dependencies) => for dependency in dependencies {
-                            create_execution_plan_for_step(
-                                &config,
-                                &dependency,
-                                steps,
-                                task_names,
-                                false,
-                                true,
-                            );
-                        },
+                        Some(ref dependencies) => {
+                            for dependency in dependencies {
+                                create_execution_plan_for_step(
+                                    &config,
+                                    &dependency,
+                                    steps,
+                                    task_names,
+                                    false,
+                                    true,
+                                );
+                            }
+                        }
                         _ => debug!("No dependencies found for task: {}", &task),
                     };
 
@@ -189,9 +191,7 @@ fn create_execution_plan_for_step(
 fn get_skipped_workspace_members(skip_members_config: String) -> HashSet<String> {
     let mut members = HashSet::new();
 
-    let members_list: Vec<&str> = skip_members_config.split(';').collect();
-
-    for member in members_list.iter() {
+    for member in skip_members_config.split(';') {
         if member.len() > 0 {
             members.insert(member.to_string());
         }
