@@ -38,7 +38,7 @@ fn run_sub_task(flow_info: &FlowInfo, sub_task: &str) {
     run_flow(&sub_flow_info, true);
 }
 
-fn run_task(flow_info: &FlowInfo, step: &Step) {
+pub fn run_task(flow_info: &FlowInfo, step: &Step) {
     info!("Running Task: {}", &step.name);
 
     if validate_condition(&flow_info, &step) {
